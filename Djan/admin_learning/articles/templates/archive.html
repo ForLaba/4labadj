@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	
+		<title>Архив всех статей</title>
+		<link rel="stylesheet" href="{{ STATIC_URL }}/static/article.css">
+		
+	</head>
+	
+	
+	<body class="archive">
+	
+		<div class="header">
+		
+			<img src="{{ STATIC_URL }}/static/img/ОМГ.png"/>
+			
+		</div>
+		
+		<style type="text/css">
+		
+			img {height: 250px;}
+		
+		</style>
+
+		<div class="posts-archive">
+		
+		{% for post in posts%}
+			<div class="one-post">
+			
+				<a href="/article/{{post.id}}"><h2 class="post-title">{{ post.title }}</h2></a>
+				
+				
+				<div class="article-info">
+				
+					<div class="article-author">{{ post.author.username }}</div>
+					
+					<div class="article-created-date">{{ post.created_date }}</div>
+					
+				</div>
+				
+				<p class="article-text">{{ post.get_excerpt }}</p>
+			
+				<hr>
+			</div>
+		{% endfor %}
+		
+		</div>
+		
+	</body>
+	
+</html>
